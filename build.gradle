@@ -1,12 +1,12 @@
 buildscript {
     ext.kotlin_version = "1.4.20"
-    ext.robolectric_version = "4.3.1"
+    ext.robolectric_version = "4.4"
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.0.2'
+        classpath 'com.android.tools.build:gradle:4.2.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
