@@ -4,7 +4,7 @@
             "outputFile": "/Users/pjkt/Projects/gitLab/Stopwatch with Productivity Timer/Stopwatch with Productivity Timer/task/build/intermediates/incremental/mergeDebugResources/merged.dir/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
-                    "source": "/Users/pjkt/.gradle/caches/transforms-3/0fc5f7885a4159d1c04113cb0293b8f3/transformed/appcompat-1.2.0/res/values-watch-v20/values-watch-v20.xml",
+                    "source": "/Users/pjkt/.gradle/caches/transforms-3/764a545499dd82337253c98a3af2e7c6/transformed/appcompat-1.2.0/res/values-watch-v20/values-watch-v20.xml",
                     "from": {
                         "startLines": "2,5,8",
                         "startColumns": "4,4,4",
