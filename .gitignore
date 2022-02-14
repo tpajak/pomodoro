@@ -2,3 +2,5 @@
 /.gradle/
 /.idea/
 /build/intermediates/lint-cache/
+/Topics/
+course-info.yaml
