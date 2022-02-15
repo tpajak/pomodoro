@@ -14,7 +14,7 @@ import org.robolectric.Shadows.shadowOf
 import org.hyperskill.stopwatch.TestUtils.findViewByString
 import java.util.concurrent.TimeUnit
 
-//Version 1.4
+// Version 1.4
 @RunWith(RobolectricTestRunner::class)
 class TimerStateUnitTest {
 
@@ -120,5 +120,4 @@ class TimerStateUnitTest {
         val actual = textView.text
         assertEquals(messageTextViewAssertionError, expected, actual)
     }
-
 }
