@@ -2,9 +2,14 @@ package org.hyperskill.stopwatch
 
 class Time {
     private var seconds: Long
+    private var timeLimit: Long? = null
 
     init {
         seconds = 0
+    }
+
+    fun getSeconds(): Long {
+        return seconds
     }
 
     fun resetTime() {
@@ -13,6 +18,20 @@ class Time {
 
     fun countTime() {
         seconds += 1
+    }
+
+    fun getTimeLimit(): Long? {
+        return timeLimit
+    }
+
+    fun resetTimeLimit() {
+        timeLimit = null
+    }
+
+    fun setTimeLimit(limit: Long?) {
+        if (limit != null) {
+            timeLimit = limit + 1
+        }
     }
 
     fun getTimeHoursMinsSecondsString(): String {
@@ -27,6 +46,6 @@ class Time {
         val minutes = (seconds % 3600) / 60;
         val seconds = seconds % 60;
 
-        return String.format("%02d:%02d", minutes, seconds);
+        return String.format("%02d:%02d", minutes, seconds)
     }
 }
