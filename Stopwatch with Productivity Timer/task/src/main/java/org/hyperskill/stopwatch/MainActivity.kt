@@ -39,8 +39,6 @@ class MainActivity : AppCompatActivity(), MyDialog.MyDialogListener {
             mRunnable = Runnable {
                 // Do something here
                 time.countTime()
-//                Toast.makeText(this, "TICK", Toast.LENGTH_SHORT).show()
-//                timeTv.text = time.getTimeMinsSecondsString()
                 if (time.getTimeLimit() == null) {
                     timeTv.text = time.getTimeMinsSecondsString()
                     timeTv.setTextColor(Color.BLACK)
