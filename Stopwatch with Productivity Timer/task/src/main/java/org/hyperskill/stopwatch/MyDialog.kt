@@ -10,7 +10,6 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 
-
 class MyDialog(private val message: String) : DialogFragment() {
     private var listener: MyDialogListener? = null
     private var editTextLimit: EditText? = null
