@@ -1,7 +1,9 @@
 package org.hyperskill.stopwatch
 
+import android.app.NotificationManager
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
@@ -9,6 +11,7 @@ import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import java.util.*
 
@@ -16,8 +19,12 @@ import java.util.*
 class MainActivity : AppCompatActivity(), MyDialog.MyDialogListener {
     private lateinit var mHandler: Handler
     private lateinit var mRunnable: Runnable
+    private lateinit var mNotificationRunner: Runnable
+    var isTimeLimitReached: Boolean = false
+    var isNotificationShown: Boolean = false
     var time: Time = Time()
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -46,12 +53,16 @@ class MainActivity : AppCompatActivity(), MyDialog.MyDialogListener {
                     if (time.getSeconds() >= time.getTimeLimit()!!) {
                         timeTv.text = time.getTimeMinsSecondsString()
                         timeTv.setTextColor(Color.RED)
+                        //
+                        if (!isNotificationShown) {
+                        showNotification()
+                        }
+
                     } else {
                         timeTv.text = time.getTimeMinsSecondsString()
                         timeTv.setTextColor(Color.BLACK)
                     }
                 }
-
 
                 progressBar.indeterminateTintList = ColorStateList.valueOf(randomColour())
 
@@ -76,6 +87,8 @@ class MainActivity : AppCompatActivity(), MyDialog.MyDialogListener {
         }
 
         resetBtn.setOnClickListener {
+            isNotificationShown = false
+
             Toast.makeText(this, "Reset button clicked", Toast.LENGTH_SHORT).show()
             progressBar.visibility = View.GONE
 
@@ -88,6 +101,7 @@ class MainActivity : AppCompatActivity(), MyDialog.MyDialogListener {
                 settingsBtn.isEnabled = true
                 settingsBtn.isClickable = true
                 isTimerRunning = false
+                isTimeLimitReached = false
             }
         }
 
@@ -95,6 +109,20 @@ class MainActivity : AppCompatActivity(), MyDialog.MyDialogListener {
             openDialog("Set upper limit in seconds")
         }
 
+    }
+
+    private fun showNotification() {
+        val mNotification = MyNotification(context = applicationContext)
+                mNotification.showNotification()
+
+        isNotificationShown = true
+//
+//        val mNotificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+//        val notifications = mNotificationManager.activeNotifications
+//        for (notification in notifications) {
+//            if (notification.id == 1) {
+//            }
+//        }
     }
 
     private fun openDialog(title: String) {
